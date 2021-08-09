@@ -11,6 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh './mvnw clean package'
+                // sh 'true' // true or false
             }
 
             post {
@@ -18,6 +19,9 @@ pipeline {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
                 }
+                /*changed {
+// insert send email
+                }*/
             }
         }
     }
